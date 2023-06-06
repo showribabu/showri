@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+    <style>
+        * {
+            
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            width:60%;
+            max-width: 600px;
+            margin-top:40%;
+            padding:15px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: rgb(78, 14, 78);
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="password"]
+        {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .form-container input[type="email"] 
+        {
+            width:100%;
+            padding:8px;
+            margin-bottom: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+
+        }
+
+        .form-container select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            justify-content: flex-end; /* Align items to the right */
+            
+        }
+
+        .password-toggle {
+            position: relative;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+    
+        .password-toggle .toggle-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .form-container .submit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            background-color: rgb(78, 14, 78);
+            cursor: pointer;
+        }
+
+        .image-container {
+            width: 40%;
+            max-width: 400px;
+            margin-left: 80px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .nav-container {
+            
+            margin: 0 auto;
+            
+        }
+        
+        .navbar {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 24px;
+            text-align: center;
+            align-items: center;
+            
+        }
+        
+        .navbar-menu {
+            list-style: none;
+            padding: 0;
+            margin-left:60%;
+        }
+        
+        .navbar-menu li {
+            display:inline;
+            margin-left:20%;
+
+                     
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        
+       
+        #msg
+        {
+            color: rgb(239, 20, 20);
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            align-items: center;
+            text-align: center;
+            
+   
+        }
+
+        h4{
+            font-family: Arial, Helvetica, sans-serif;
+            
+            text-shadow:1px 1px .1px black;
+
+        }
+    
+
+        @media (max-width: 768px) {
+            .container {
+              flex-direction: column;
+              align-items: center;
+              margin-top: 10%;
+            }
+          
+            .form-container {
+              width: 90%;
+              margin-top: 0;
+            }
+          
+            .image-container {
+              width: 80%;
+              margin: 20px 0;
+            }
+          
+            .navbar-menu {
+              margin-left: 0;
+            }
+          
+            .navbar-menu li {
+              margin-left: 0;
+            }
+            .form-container {
+                width: 90%;
+                max-width: 600px;
+                margin-top:150%;
+                padding: 15px;
+                background-color: #f5f5f5;
+                border-radius: 10px;
+              }
+              
+          }
+          
+    </style>
+
+    <!-- <script>
+        var fname = document.forms["registrationForm"]["fname"].value;
+        var lname = document.forms["registrationForm"]["lname"].value;
+        var userid = document.forms["registrationForm"]["userid"].value;
+        var email = document.forms["registrationForm"]["email"].value;
+        var passwd = document.forms["registrationForm"]["passwd"].value;
+        var cpasswd = document.forms["registrationForm"]["cpasswd"].value;
+        var id_register = document.getElementById("id_register");
+
+        // Function to validate the form
+        function validateForm() {
+            
+            // Validate required fields
+            if (fname === "" || lname === "" || userid === "" || passwd === "" || cpasswd === "") {
+                alert("Please fill in all required fields.");
+                return false;
+            }
+
+            
+            // Validate password match
+            if (passwd !== cpasswd) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            // Validate email format
+            //var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            //if (!emailRegex.test(email)) {
+            //    alert("Please enter a valid email address.");
+            //    return false;
+            //}
+
+
+                //document.getElementById("showPasswordCheckbox").addEventListener("change", function() {
+                //    var passwordField = document.getElementById("pswd");
+                //    if (this.checked) {
+                //        passwordField.setAttribute("type", "text");
+                //        //make type to text than password...
+                //    } else {
+                //        passwordField.setAttribute("type", "password");
+                //    }
+                //});
+            
+
+            document.forms["registrationForm"].setAttribute("action","/reg.php")
+        }  
+
+        
+
+        //show password
+        var showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
+        var passwordField = document.getElementById("passwordField");
+    
+        showPasswordCheckbox.addEventListener("change", function() {
+            if (showPasswordCheckbox.checked) {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        });
+
+    </script> -->
+    <script>
+        // Function to validate the form
+        function validateForm() {
+            var fname = document.forms["registrationForm"]["fname"].value;
+            var lname = document.forms["registrationForm"]["lname"].value;
+            var userid = document.forms["registrationForm"]["userid"].value;
+            var passwd = document.forms["registrationForm"]["passwd"].value;
+            var cpasswd = document.forms["registrationForm"]["cpasswd"].value;
+    
+            
+
+            //validation of userid
+            //validation of password
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            const validationMessage = document.getElementById('password-validation');
+            if (regex.test(passwd)) {
+                validationMessage.textContent = 'Password meets the requirements.';
+                validationMessage.style.color = 'green';
+              } 
+              else {
+                validationMessage.textContent = 'Password must contain at least one uppercase letter, one lowercase letter, one numeric digit, one special character, and be at least 8 characters long.';
+                validationMessage.style.color = 'red';
+              }
+
+
+            // Validate password match
+            if (passwd !== cpasswd) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            
+            document.forms["registrationForm"].setAttribute("action", "/JMJ/app.php");
+            
+        }
+        // Show/hide password
+        function showPassword()
+        {
+
+            var passwordField = document.getElementById("passwd");
+            var toggleIcon = document.getElementById("toggleIcon");
+    
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            }
+        }
+      
+    </script>
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="navbar-brand">
+                    <p style="text-shadow:1px 1px .1px black;">DRDO (DEFENCE RESEARCH AND DEVELOPMENT ORGANISATION )</p>
+                    <h4 style="display: inline; font-size:16px;"> - Where there is no scope to compromise security.</h4>
+
+                </div>
+                <ul class="navbar-menu">
+                    <li><a href="ex.html" class="btn btn-secondary">HOME</a></li>
+
+                    <li><a href="two.html" class="btn btn-primary" class="fas fa-sign-in-alt">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Welcome to registration</h2>
+            <form name="registrationForm"  method="post">
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname" required>
+
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname" required>
+
+                <label for="userid">User ID:</label>
+                <input type="text" id="userid" name="userid" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="owqn">One Word Question:</label>
+                <select name="owq" id="owq">
+                    <option value="What is your favorite color?">What is your favorite color?</option>
+                    <option value="What is your birthplace?">What is your birthplace?</option>
+                    <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                    <option value="What is your favorite book?">What is your favorite book?</option>
+                    <option value="What is your dream vacation destination?">What is your dream vacation destination?</option>
+                    <option value="What is your favorite movie?">What is your favorite movie?</option>
+                    <option value="What is your favorite animal?">What is your favorite animal?</option>
+                    <option value="What is your favorite hobby?">What is your favorite hobby?</option>
+                    <option value="What is your favorite season?">What is your favorite season?</option>
+                    <option value="What is your favorite sport?">What is your favorite sport?</option>
+                  </select>
+
+                <label for="answer">Answer:</label>
+                <input type="text" id="answer" name="answer" required>
+
+                <label for="passwd">Password:</label>
+                <input type="password" id="passwd" name="password" required minlength="8" maxlength="10">
+
+                <p id="password-validation" style="color: red;"></p>
+
+                <div class="password-toggle">
+
+                    <i id="toggleIcon" class="fas fa-eye toggle-icon" onclick="showPassword()">Show Password</i>
+                </div>
+
+                <label for="cpasswd">Confirm Password:</label>
+                <input type="password" id="cpasswd" name="cpassword" required minlength="8" maxlength="10">
+
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contact" required>
+
+                
+
+                <input class="submit-button" type="submit" value="REGISTER" onclick="validateForm()">
+            </form>
+
+            <p id="msg"><?php echo isset($message)?$message :  '' ;?></p>
+        </div>
+
+        <div class="image-container">
+            <img src="logo2.png" alt="Form Image">
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+
+</body>
+</html>

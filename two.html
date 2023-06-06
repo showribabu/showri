@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .wrapper {
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+
+        #img-logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+
+        .login {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .cbox {
+            margin-bottom: 10px;
+        }
+
+        .spd {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .btn i {
+            margin-right: 5px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+        .password-toggle {
+            position: relative;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-toggle-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #007bff;
+        }
+
+        .password-toggle-icon i {
+            font-size: 16px;
+        }
+
+        .nav-container {
+            margin: 0 auto;
+        }
+
+        .navbar {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 24px;
+            text-align: center;
+            align-items: center;
+            margin-left: 180px;
+        }
+
+        .navbar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar-menu li {
+            display: inline-block;
+            margin-left: 13px;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h4 {
+            font-family: Arial, Helvetica, sans-serif;
+            text-shadow: 1px 1px .1px black;
+        }
+
+        #msg {
+            color: green;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            align-items: center;
+            text-align: center;
+        }
+
+        @media (max-width: 576px) {
+            .navbar-menu {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .navbar-menu li {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+    <script>
+        // Show/hide password
+        function showPassword() {
+            var passwordField = document.getElementById("pass");
+            var toggleIcon = document.getElementById("toggleIcon");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            }
+        } 
+
+        function forget()
+        {
+            window.open("/JMJ/forget.html", "_blank");       
+        }
+
+        
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="navbar-brand">
+                    <p style="text-shadow:1px 1px .1px black;">DRDO (DEFENCE RESEARCH AND DEVELOPMENT ORGANISATION)</p>
+                    <h4 style="display: inline; font-size: 16px;">- Where there is no scope to compromise security.</h4>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="flex-container">
+        <div class="wrapper">
+            <img id="img-logo" src="logo1.png" alt="DRDO logo">
+            <h2 class="login">Welcome to Login</h2>
+
+            <form  method="post" id="form_id" action="/JMJ/app1.php">
+                <div class="form-group">
+
+                    <label for="userid">USER ID:</label>
+                    <input class="form-control" type="text" id="id" name="userid">
+                    <label for="password">PASSWORD:</label>
+                    <div class="password-toggle">
+                        <input class="form-control" type="password" id="pass" name="password" minlength="8" maxlength="10">
+                    </div>
+
+                    <i id="toggleIcon" class="fas fa-eye toggle-icon" onclick="showPassword()">ShowPassword</i>
+
+                </div>
+
+                <br>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-sign-in-alt"></i>LOGIN</button>
+                <a class="btn btn-success" href="ine.html"><i class="fas fa-user-plus"></i> Register</a>
+                <button class="btn btn-info" onclick="forget()"><i class="fas fa-question-circle"></i> Forgot Password</button>
+            </form>
+
+            <p id="msg"><?php echo isset($message) ? $message : ''; ?></p>
+        </div>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
